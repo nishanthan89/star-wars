@@ -71,7 +71,97 @@ const mockCharacterData = [
       "mass": 49
   },
   {
-      "name": "Owen Lars",
+      "name": "Owen Lars001",
+      "homeWorld": "Tatooine",
+      "birthYear": "52BBY",
+      "gender": "Male",
+      "hairColor": "brown, grey",
+      "height": 178,
+      "mass": 120
+  },
+  {
+      "name": "Leia Organa001",
+      "homeWorld": "Alderaan",
+      "birthYear": "19BBY",
+      "gender": "Female",
+      "hairColor": "brown",
+      "height": 150,
+      "mass": 49
+  },
+  {
+      "name": "Owen Lars002",
+      "homeWorld": "Tatooine",
+      "birthYear": "52BBY",
+      "gender": "Male",
+      "hairColor": "brown, grey",
+      "height": 178,
+      "mass": 120
+  },
+  {
+      "name": "Leia Organa002",
+      "homeWorld": "Alderaan",
+      "birthYear": "19BBY",
+      "gender": "Female",
+      "hairColor": "brown",
+      "height": 150,
+      "mass": 49
+  },
+  {
+      "name": "Owen Lars003",
+      "homeWorld": "Tatooine",
+      "birthYear": "52BBY",
+      "gender": "Male",
+      "hairColor": "brown, grey",
+      "height": 178,
+      "mass": 120
+  },
+  {
+      "name": "Leia Organa004",
+      "homeWorld": "Alderaan",
+      "birthYear": "19BBY",
+      "gender": "Female",
+      "hairColor": "brown",
+      "height": 150,
+      "mass": 49
+  },
+  {
+      "name": "Owen Lars005",
+      "homeWorld": "Tatooine",
+      "birthYear": "52BBY",
+      "gender": "Male",
+      "hairColor": "brown, grey",
+      "height": 178,
+      "mass": 120
+  },
+  {
+      "name": "Leia Organa007",
+      "homeWorld": "Alderaan",
+      "birthYear": "19BBY",
+      "gender": "Female",
+      "hairColor": "brown",
+      "height": 150,
+      "mass": 49
+  },
+  {
+      "name": "Owen Lars007",
+      "homeWorld": "Tatooine",
+      "birthYear": "52BBY",
+      "gender": "Male",
+      "hairColor": "brown, grey",
+      "height": 178,
+      "mass": 120
+  },
+  {
+      "name": "Leia Organa008",
+      "homeWorld": "Alderaan",
+      "birthYear": "19BBY",
+      "gender": "Female",
+      "hairColor": "brown",
+      "height": 150,
+      "mass": 49
+  },
+  {
+      "name": "Owen Lars008",
       "homeWorld": "Tatooine",
       "birthYear": "52BBY",
       "gender": "Male",
