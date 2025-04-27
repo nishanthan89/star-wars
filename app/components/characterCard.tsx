@@ -1,15 +1,13 @@
 'use client'; 
-import { useState } from 'react';
 import { Favorite, FavoriteBorder, Public, CalendarToday, Wc, Face, Height, FitnessCenter } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
-
 import { useFavorites } from '../context/FavoritesContext';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import CommonButton from '../components/button';
 
 
 export default function CharacterCard({ character,onView, onAdd,id}: any) {
-  //const [isFavorite, setIsFavorite] = useState(false);
   const router = useRouter();
   const { favorites, addFavorite, removeFavorite } = useFavorites();
 
@@ -23,10 +21,6 @@ export default function CharacterCard({ character,onView, onAdd,id}: any) {
     }
   };
 
-//   const handleFavoriteToggle = () => {
-//     setIsFavorite((prev) => !prev);
-//   };
-
   const viewDetailCharacter = () => {
     console.log("Navigating to: ", `/dashboard/${id}`);
     router.push(`/dashboard/${id}`);
@@ -38,10 +32,6 @@ export default function CharacterCard({ character,onView, onAdd,id}: any) {
 <div className="absolute top-2 right-2 cursor-pointer" onClick={toggleFavorite}>
         {isFavorited ? <FavoriteIcon sx={{ color: 'blue' }} /> : <FavoriteBorderIcon sx={{ color: 'gray' }} />}
       </div>
-
-
-
-      {/* Character Name */}
       <h2 className="text-2xl font-bold text-blue-600 mb-4">{character.name}</h2>
       <ul className="text-sm text-zinc-600 space-y-2 mt-2">
           <li className="flex items-center">
@@ -69,18 +59,7 @@ export default function CharacterCard({ character,onView, onAdd,id}: any) {
             <span className="font-bold">Mass:</span>&nbsp;{character.mass || '-'}
           </li>
         </ul>
-
-        <button
-        onClick={() => {
-            console.log('View Detail button clicked');
-            onView(); // still call the passed onView after the log
-        }}
-        className="mt-6 bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition text-center text-lg"
-        >
-        View Detail
-        </button>
-
-
+        <CommonButton label="View Detail" variant="primary" onClick={onView} fullWidth />
     </div>
   );
 }

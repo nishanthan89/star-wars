@@ -2,16 +2,19 @@
 
 import { useFavorites } from '../context/FavoritesContext';
 import { useState } from 'react';
-//import Modal from '../components/EditModal'; // Create a simple Modal component
-//import { Character } from '../types/Character'; ;
+import Modal from '../components/EditModal';
+import CommonButton from '../components/button';
 
 export default function FavoritesPage() {
   const { favorites, removeFavorite } = useFavorites();
   const [selectedCharacter, setSelectedCharacter] = useState(null);
+  console.log(favorites);
 
-//   const openModal = (character) => {
-//     setSelectedCharacter(character);
-//   };
+  const openModal = (character: any) => {
+    console.log('text cc is'+character);
+    setSelectedCharacter(character);
+  };
+  
 
   const closeModal = () => {
     setSelectedCharacter(null);
@@ -25,52 +28,27 @@ export default function FavoritesPage() {
         <p>No favorites added yet.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {favorites.map((character, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md p-4 relative">
-              <h2 className="text-xl font-semibold mb-2">{character.name}</h2>
-              <p><strong>Height:</strong> {character.height} cm</p>
-              <p><strong>Mass:</strong> {character.mass} kg</p>
 
-              <div className="flex gap-2 mt-4">
-                <button 
-                  className="bg-blue-500 text-white px-3 py-1 rounded"
-                  //onClick={() => openModal(character)}
-                >
-                  Edit
-                </button>
-                {/* <button 
-                  className="bg-red-500 text-white px-3 py-1 rounded"
-                  onClick={() => removeFavorite(character.id)}
-                >
-                  Remove
-                </button> */}
-              </div>
+            {favorites.map((character) => (
+                <div key={character.id} className="bg-white rounded-lg shadow-md p-4 relative">
+            <h2 className="text-xl font-semibold mb-2">{character.name}</h2>
+            <p><strong>Height:</strong> {character.height} cm</p>
+            <p><strong>Mass:</strong> {character.mass} kg</p>
+
+            <div className="flex gap-4 mt-4">
+                <CommonButton label="Edit" variant="primary" onClick={() => openModal(character)} fullWidth />
+                <CommonButton label="Remove" variant="outline" onClick={() => removeFavorite(character.id)} fullWidth />
             </div>
-          ))}
+            </div>
+
+            ))}
+
         </div>
       )}
 
-
+    {selectedCharacter && (
+            <Modal character={selectedCharacter} onClose={closeModal} />
+        )}
     </div>
   );
 }
-
-
-
-// {selectedCharacter && (
-//     <Modal onClose={closeModal}>
-//       {/* Inside modal you can allow editing character */}
-//       <div>
-//         <h2 className="text-xl font-bold mb-4">Edit Character</h2>
-//         {/* You can add form here to update fields */}
-//         <p>Name: {selectedCharacter.name}</p>
-//         {/* Later you can add editable inputs */}
-//         <button 
-//           className="mt-4 bg-green-500 text-white px-4 py-2 rounded"
-//           onClick={closeModal}
-//         >
-//           Save
-//         </button>
-//       </div>
-//     </Modal>
-//   )}

@@ -2,6 +2,7 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 
 interface Character {
+  id: number;
   name: string;
   height: string;
   mass: string;
@@ -10,16 +11,14 @@ interface Character {
   eyeColor: string;
   birthYear: string;
   gender: string;
-  // Add any other fields you need
 }
 
 interface FavoritesContextType {
   favorites: Character[];
   addFavorite: (character: Character) => void;
-  removeFavorite: (character: Character) => void;
+  removeFavorite: (id: number) => void;
 }
 
-// Give default values properly
 const FavoriteContext = createContext<FavoritesContextType>({
   favorites: [],
   addFavorite: () => {},
@@ -28,20 +27,21 @@ const FavoriteContext = createContext<FavoritesContextType>({
 
 export const FavoriteProvider = ({ children }: { children: ReactNode }) => {
   const [favorites, setFavorites] = useState<Character[]>([]);
+  const [nextId, setNextId] = useState(1); 
 
   const addFavorite = (character: Character) => {
     setFavorites((prevFavorites) => {
       if (!prevFavorites.some((fav) => fav.name === character.name)) {
-        return [...prevFavorites, character];
+        const newCharacter = { ...character, id: nextId }; 
+        setNextId(nextId + 1); 
+        return [...prevFavorites, newCharacter];
       }
       return prevFavorites;
     });
   };
 
-  const removeFavorite = (character: Character) => {
-    setFavorites((prevFavorites) =>
-      prevFavorites.filter((fav) => fav.name !== character.name)
-    );
+  const removeFavorite = (id: number) => {
+    setFavorites(prev => prev.filter(fav => fav.id !== id));
   };
 
   return (
@@ -54,3 +54,4 @@ export const FavoriteProvider = ({ children }: { children: ReactNode }) => {
 export const useFavorites = () => {
   return useContext(FavoriteContext);
 };
+
